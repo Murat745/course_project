@@ -23,13 +23,13 @@ class Book(AbstractBaseModel):
 
 class Order(AbstractBaseModel):
     STATUS_CHOICES = (
-        ('in_work', 'In Work'),
-        ('success', 'Success'),
-        ('fail', 'Fail'),
+        ('processing', 'Processing'),
+        ('confirmed', 'Confirmed'),
+        ('denied', 'Denied'),
     )
 
     user_email = models.EmailField()
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='in_work')
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='processing')
     delivery_address = models.CharField(max_length=100)
     order_id_in_shop = models.PositiveIntegerField()
 
