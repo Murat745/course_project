@@ -1,23 +1,3 @@
-from rest_framework import viewsets
+from django.shortcuts import render
 
-from warehouse_app.models import Book, Order, OrderItem
-from warehouse_app.serializers import BookSerializer, OrderItemSerializer, OrderSerializer
-
-
-class BookViewSet(viewsets.ModelViewSet):
-    queryset = Book.objects.all().order_by('-created_at')
-    serializer_class = BookSerializer
-
-
-class OrderViewSet(viewsets.ModelViewSet):
-    queryset = Order.objects.all().order_by('-created_at')
-    serializer_class = OrderSerializer
-
-
-class OrderItemViewSet(viewsets.ModelViewSet):
-    queryset = OrderItem.objects.all().order_by('-created_at')
-    serializer_class = OrderItemSerializer
-
-    def get_serializer(self, *args, **kwargs):
-        kwargs['many'] = True
-        return super().get_serializer(*args, **kwargs)
+# Create your views here.
